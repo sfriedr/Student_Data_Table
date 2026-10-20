@@ -1,0 +1,11 @@
+# sensible Konfigurationsdateien ausschließen
+config.php
+
+# Composer-Abhängigkeiten ausschießen
+/vendor/
+
+# Betriebssystem und Editor-Dateien ausschließen
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

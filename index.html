@@ -1,0 +1,148 @@
+<!DOCTYPE html> <!--HTML5-->
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>DataTable MariaDB</title> <!--Titel der Registerkarte-->
+    <link rel="icon" href="data:,"> <!--Sagt Browser, dass es kein Favoriten-Icon gibt, nach welchem er suchen muss. Das ist das Icon im Tab neben dem Titel-->
+    <!--CND Stylesheets-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Menu Bar -->
+<nav>
+    <ul class="menu-root">
+        <!-- Ebene 1: Datei -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">Datei</a>
+            <!-- Ebene 2:-->
+            <ul class="submenu">
+                <!-- Neu laden -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link" id="menu-tabelle-neu-laden">Tabelle neu laden</a>
+                </li>
+                <!-- Exportieren -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Exportieren &raquo;</a>
+                    <ul class="submenu submenu-nested">
+                        <!-- als CSV -->
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-export-csv">Export als CSV</a>
+                        </li>
+                        <!-- als XLSX -->
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-export-xlsx">Export als XLSX</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Ebene 1: Student Bearbeiten -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">Student Bearbeiten</a>
+            <ul class="submenu">
+                <!-- Ebene 2: Neu -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Neu &raquo;</a>
+                    <ul class="submenu submenu-nested">
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-cell-insertmode">Einfügemodus aktivieren/deaktivieren</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-create-new-student">Student anlegen</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-save-new-student">Neuen Studenten speichern</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Ebene 2: Bearbeiten -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Bearbeiten &raquo;</a>
+                    <ul class="submenu submenu-nested">
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-cell-editmode">Zellenbearbeitungsmodus aktivieren/deaktivieren</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-save-changed-student">Änderungen an Student speichern</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Ebene 2: Löschen -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Löschen &raquo;</a>
+                    <ul class="submenu submenu-nested">
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-selection-mode">Zeilenauswahlmodus aktivieren/deaktivieren</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" id="menu-delete-student">Student löschen</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Ebene 1: Info -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">Info</a>
+            <ul class="submenu">
+                <li class="menu-item">
+                    <a href="#" class="menu-link" id="menu-info">?</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<!-- Table -->
+<table id="resultTable" class="display">
+    <thead>
+        <tr>
+            <th>student_id</th>
+            <th>uid</th>
+            <th>givenName</th>
+            <th>sn</th>
+            <th>mail</th>
+
+            <th>Studiengang-Info</th>
+            <th>Name des Studiengangs</th>
+            <th>Abschluss</th>
+            <th>Fachbereich</th>
+            <th>Studienort</th>
+
+            <th>source_studyBranch1</th>
+            <th>source_created_at</th>
+            <th>source_updated_at</th>
+            <th>override_id</th>
+            <th>override_created_by</th>
+            <th>override_updated_by</th>
+            <th>override_created_at</th>
+            <th>override_updated_at</th>
+
+            <th>overr_uid</th>
+            <th>overr_givenName</th>
+            <th>overr_sn</th>
+            <th>overr_mail</th>
+            <th>overr_stg_name</th>
+            <th>overr_abschluss</th>
+            <th>overr_fachbereich</th>
+            <th>overr_studienort</th>
+        </tr>
+    </thead>
+</table>
+
+<!--CDN Skripte-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- Basis-Bibliothek jQuery einbinden über CND - ermöglicht Kommi zwischen JavaScript und HTML-->
+<script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script> <!-- Bib. dataTable einbinden über CND - für Funktionen (Sortieren, Such, Paginierung)-->
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

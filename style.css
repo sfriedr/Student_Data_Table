@@ -1,0 +1,106 @@
+/* Versteckt die physischen DataTables-Buttons, damit deine eigenen Links genutzt werden können */
+.btn-hidden-excel, .btn-hidden-csv {
+    display: none !important;
+}
+
+/* Wenn der Auswahlmodus aktiv ist (Menüpunkt "menu-auswahl") */
+.menu-insert-mode-active {
+    background-color: #c4c2c2 !important; /*Farbe hinter Text* - !important -> Eigene CSS-Regel hat vorrang zu Framework-CSS-Regeln/
+    color: white !important; /*Textfarbe*/
+}
+
+.menu-edit-mode-active {
+    background-color: #c4c2c2 !important; /*Farbe hinter Text* - !important -> Eigene CSS-Regel hat vorrang zu Framework-CSS-Regeln/
+    color: white !important; /*Textfarbe*/
+}
+
+.menu-selection-mode-active {
+    background-color: #c4c2c2 !important; /*Farbe hinter Text* - !important -> Eigene CSS-Regel hat vorrang zu Framework-CSS-Regeln/
+    color: white !important; /*Textfarbe*/
+}
+
+
+.new-row {
+    background-color:#fff9c4 !important;
+}
+
+.cell-edited {
+    background-color: #fff9c4 !important;
+}
+
+.dropdown-edited {
+    background-color: #fff9c4 !important;
+}
+
+
+
+
+
+
+
+/* Entspricht deinem: nav ul */
+.menu-root {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    display: flex;
+}
+
+/* Entspricht deinem: nav li */
+.menu-item {
+    position: relative;
+}
+
+/* Entspricht deinem: nav a */
+.menu-link {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+/* Entspricht deinem: nav a:hover */
+.menu-link:hover {
+    background-color: #555;
+}
+
+/* Entspricht deinem: nav ul ul (Die Untermenüs) */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    min-width: 200px;
+    background-color: #444;
+    z-index: 100;
+    list-style: none; /* Wichtig, damit keine Punkte erscheinen */
+    padding: 0;
+}
+
+/* Die Logik: Erscheinen beim Hover über das Listen-Element */
+.menu-item:hover > .submenu {
+    display: flex;
+}
+
+/* Entspricht deinem: nav ul ul ul (Dritte Ebene) */
+.submenu-nested {
+    top: 0;
+    left: 100%;
+}
+
+
+
+
+
+
+
+
+/*------------------------*/
+
+/* Wenn eine Tabellenzeile ausgewählt wurde */
+.row-selected {
+    background-color: #d1ecf1 !important;
+}
